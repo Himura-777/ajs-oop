@@ -1,4 +1,4 @@
-class Character {
+export default class Character {
 	constructor(name, type) {
 		const types = [
 			"Bowman",
@@ -26,19 +26,20 @@ class Character {
 	}
 
 	levelUp() {
-		if (this.level === 0) {
-			throw new Error("Нельзя повысить левел умершего");
+		if (this.health <= 0) {
+			throw new Error("Нельзя повысить уровень мёртвого персонажа");
 		}
 
 		this.level += 1;
 		this.health = 100;
-		this.attack += this.attack * 0.2;
-		this.defence += this.defence * 0.2;
+		this.attack *= 1.2;
+		this.defence *= 1.2;
 	}
 
 	damage(points) {
-		if (this.health >= 0) {
-			this.health -= points * (1 - defence / 100);
+		this.health -= points * (1 - this.defence / 100);
+		if (this.health < 0) {
+			this.health = 0;
 		}
 	}
 }

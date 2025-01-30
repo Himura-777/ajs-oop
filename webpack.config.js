@@ -1,7 +1,7 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssextractPlugin = require("mini-css-extract-plugin");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-module.exports = {
+export default {
 	module: {
 		rules: [
 			{
@@ -12,7 +12,7 @@ module.exports = {
 
 			{
 				test: /\.css$/,
-				use: [MiniCssextractPlugin.loader, "css-loader"],
+				use: [MiniCssExtractPlugin.loader, "css-loader"],
 			},
 		],
 	},
@@ -21,6 +21,6 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: "./src/index.html",
 		}),
-		new MiniCssextractPlugin(),
+		new MiniCssExtractPlugin(),
 	],
 };
